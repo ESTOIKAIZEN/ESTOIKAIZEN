@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESTOIKAIZEN</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .quote {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .checklist, .exercise-table {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .checklist ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .checklist input[type="text"] {
+      width: 80%;
+      padding: 5px;
+    }
+
+    .checklist button, .exercise-table button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      background: #3498db;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checklist input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ESTOIKAIZEN</h1>
+  <p class="quote">"Pequeños hábitos, grandes cambios. Sé constante, sé estoico, sé Kaizen."</p>
+
+  <section class="checklist">
+    <h2>Checklist Diario</h2>
+    <ul id="taskList"></ul>
+    <input type="text" id="newTask" placeholder="Nueva tarea...">
+    <button onclick="addTask()">Agregar</button>
+  </section>
+
+  <section class="exercise-table">
+    <h2>Registro de Ejercicio</h2>
+    <table id="exerciseTable">
+      <tr>
+        <th>Día</th>
+        <th>Ejercicio</th>
+        <th>Duración</th>
+        <th>Comentarios</th>
+      </tr>
+    </table>
+    <button onclick="addExerciseRow()">Agregar Registro</button>
+  </section>
+
+  <div class="footer">© 2025 ESTOIKAIZEN</div>
+
+  <script>
+    const taskList = document.getElementById('taskList');
+
+    function addTask() {
+      const taskInput = document.getElementById('newTask');
+      const taskText = taskInput.value.trim();
+      if (taskText !== '') {
+        const li = document.createElement('li');
+        li.innerHTML = `<input type="checkbox"> <span>${taskText}</span>`;
+        taskList.appendChild(li);
+        taskInput.value = '';
+      }
+    }
+
+    function addExerciseRow() {
+      const table = document.getElementById('exerciseTable');
+      const row = table.insertRow();
+      for (let i = 0; i < 4; i++) {
+        const cell = row.insertCell();
+        cell.contentEditable = true;
+      }
+    }
+  </script>
+</body>
+</html>
